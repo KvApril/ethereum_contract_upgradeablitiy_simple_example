@@ -6,6 +6,7 @@ how to use:
 2. from your terminal cd in this project
 3. use truffle to compile the solidity code (i.e. smart contracts). $ truffle compile
 4. run this python script
+5. if you experience errors try restarting ganache and deleting the build folder (and recompile then)
 """
 
 from web3 import Web3, HTTPProvider
