@@ -36,7 +36,7 @@ coinbase = w3.eth.coinbase
 sender = w3.eth.accounts[1]
 receiver = w3.eth.accounts[2]
 
-userName = 'yourUserName'
+userName = 'jfo'
 dirPath = '/home/' + userName + '/github/ethereum_contract_upgradeablitiy_simple_example/'
 
 # create contract objects
@@ -95,3 +95,12 @@ senderBalance = tokenV2Proxy.functions.balanceOf(sender).call()
 print('sender balance is {}'.format(senderBalance))
 print('balance should be 300: 100*2 + 100 = 300')
 print('receiver not used yet. Lets try to do a transfer ?')
+
+# transfer 50 from sender to receiver
+txHash = tokenV2Proxy.functions.transfer(receiver, 50).transact({'from':sender}) # make sure sender address has ether to pay for the gas
+checkReceiptStatus(txHash)
+senderBalance = tokenV2Proxy.functions.balanceOf(sender).call()
+receiverBalance = tokenV2Proxy.functions.balanceOf(receiver).call()
+print('transfering 50 rainbowCoins from sender to receiver')
+print('sender balancer after transfer: {}'.format(senderBalance))
+print('receiver balancer after transfer: {}'.format(receiverBalance))
