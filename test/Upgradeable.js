@@ -1,3 +1,7 @@
+// 1. delete build folder
+// 2. restart ganache
+// 3. run this test: truffle test
+
 const TokenVersion1 = artifacts.require('TokenVersion1')
 const TokenVersion2 = artifacts.require('TokenVersion2')
 const Proxy = artifacts.require('Proxy')

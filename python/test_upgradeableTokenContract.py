@@ -5,7 +5,9 @@ how to use:
 1. start ganache
 2. from your terminal cd in this project
 3. use truffle to compile the solidity code (i.e. smart contracts). $ truffle compile
-4. run this python script
+4. in this script update the 'userName' variable with your OS userName
+5. run this python script
+6. if you experience errors try restarting ganache and deleting the build folder (and recompile then)
 """
 
 from web3 import Web3, HTTPProvider
@@ -36,7 +38,7 @@ coinbase = w3.eth.coinbase
 sender = w3.eth.accounts[1]
 receiver = w3.eth.accounts[2]
 
-userName = 'jfo'
+userName = 'yourUserName'
 dirPath = '/home/' + userName + '/github/ethereum_contract_upgradeablitiy_simple_example/'
 
 # create contract objects
@@ -104,3 +106,10 @@ receiverBalance = tokenV2Proxy.functions.balanceOf(receiver).call()
 print('transfering 50 rainbowCoins from sender to receiver')
 print('sender balancer after transfer: {}'.format(senderBalance))
 print('receiver balancer after transfer: {}'.format(receiverBalance))
+
+# the tokenV2 contract does not storage any data. The state of tokenV2
+#  is stored in the proxy contract
+print('does tokenV2 contract store any data ?')
+senderBalance = tokenV2.functions.balanceOf(sender).call()
+print('balance of the sender by calling tokenV2 directly : {}'.format(senderBalance))
+print('tokenV2 state is stored on the proxy contract memory !!!')
