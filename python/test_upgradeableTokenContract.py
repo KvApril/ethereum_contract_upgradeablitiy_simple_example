@@ -10,7 +10,7 @@ how to use:
 6. if you experience errors try restarting ganache and deleting the build folder (and recompile then)
 """
 
-from web3 import Web3, HTTPProvider
+from web3 import Web3, HTTPProvider # release v4.1.0 -> https://github.com/ethereum/web3.py/releases
 import json
 import time
 
